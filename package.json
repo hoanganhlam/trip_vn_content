@@ -1,0 +1,36 @@
+{
+  "name": "trip_vn_content",
+  "version": "1.0.0",
+  "description": "My marvelous Nuxt.js project",
+  "author": "dev",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.8.1",
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "dotenv": "^8.0.0",
+    "font-awesome": "^4.7.0",
+    "moment": "^2.24.0",
+    "nuxt": "^2.0.0",
+    "nuxt-buefy": "^0.3.2",
+    "vue": "latest",
+      "lodash": "latest"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "coffee-loader": "^0.9.0",
+    "coffeescript": "^2.4.1",
+    "concurrently": "^4.1.1",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.18.9",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^7.1.0"
+  }
+}
