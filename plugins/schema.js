@@ -1,129 +1,76 @@
 import Vue from 'vue'
 
-const TRIP = [
+const fields = [
     {
         field: 'title',
-        label: '',
+        label: 'Tiêu đề',
+        models: ['trips', 'destinations', 'points'],
+        type: 'text',
+        show: true,
+        update: true
     },
     {
         field: 'slug',
-        label: '',
-    },
-    {
-        field: 'description',
-        label: '',
-    },
-    {
-        field: 'estimate_price',
-        label: '',
-    },
-    {
-        field: 'fixed_price',
-        label: '',
-    },
-    {
-        field: 'photos',
-        label: '',
-    },
-    {
-        field: 'creator',
-        label: '',
-    },
-    {
-        field: 'created',
-        label: '',
-    },
-]
-
-const DESTINATION = [
-    {
-        field: 'title',
-        label: '',
-    },
-    {
-        field: 'slug',
-        label: '',
-    },
-    {
-        field: 'description',
-        label: '',
-    },
-    {
-        field: 'address',
-        label: '',
-    },
-    {
-        field: 'g_place_id',
-        label: '',
-    },
-    {
-        field: 'poster',
-        label: '',
-    },
-    {
-        field: 'photos',
-        label: '',
+        label: 'Slug',
+        models: ['trips', 'destinations', 'points'],
+        type: 'text',
+        show: true,
+        update: true
     },
     {
         field: 'is_approve',
-        label: '',
+        label: 'Phê duyệt',
+        models: ['trips', 'destinations', 'points'],
+        type: 'boolean',
+        show: true,
+        update: true
     },
     {
         field: 'created',
-        label: '',
-    },
-]
-
-const POINT = [
-    {
-        field: 'title',
-        label: '',
-    },
-    {
-        field: 'slug',
-        label: '',
-    },
-    {
-        field: 'description',
-        label: '',
-    },
-    {
-        field: 'address',
-        label: '',
-    },
-    {
-        field: 'description',
-        label: '',
+        label: 'Ngày tạo',
+        models: ['trips', 'destinations', 'points'],
+        type: 'date',
+        show: true,
+        update: true
     },
     {
         field: 'kind',
-        label: '',
+        label: 'Kiểu',
+        models: ['points'],
+        type: 'text',
+        show: true,
+        update: true
     },
     {
-        field: 'is_approve',
-        label: '',
+        field: 'address',
+        label: 'Địa chỉ',
+        models: ['points', 'destinations'],
+        type: 'text',
+        show: false,
+        update: true
     },
-
     {
-        field: 'created',
-        label: '',
+        field: 'description',
+        label: 'Mô tả',
+        models: ['points', 'destinations'],
+        type: 'text',
+        show: false,
+        update: true
+    },
+    {
+        field: 'destination',
+        label: 'Điểm đến',
+        models: ['points'],
+        type: 'select',
+        show: false,
+        update: false
     },
 ]
 
-
 Vue.mixin({
     methods: {
-        getSchena(str) {
-            switch (str) {
-                case 'trips':
-                    return TRIP
-                case 'destinations':
-                    return DESTINATION
-                case 'points':
-                    return POINT
-                default:
-                    return null
-            }
+        getSchema(str, flag) {
+            return fields.filter(item => item.show === flag && item.models.indexOf(str) !== -1)
         },
     }
 })

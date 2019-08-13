@@ -17,6 +17,10 @@ $primary: #28b76c;
 @import "../node_modules/bulma/sass/layout/section.sass";
 
 .container {
+    &.large {
+        max-width: 1180px;
+    }
+
     &.medium {
         max-width: 888px;
     }
