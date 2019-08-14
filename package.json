@@ -20,7 +20,7 @@
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.3.2",
     "vue": "latest",
-      "lodash": "latest"
+    "lodash": "latest"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.9.0",

@@ -1,16 +1,14 @@
 <template>
-    <b-field label="Find a movie">
-        <b-autocomplete
+    <b-autocomplete
             :data="data"
             :field="field"
             :loading="isFetching"
             @typing="getAsyncData"
             @select="handleSelect">
-            <template slot-scope="props">
-                {{ props.option.title }}
-            </template>
-        </b-autocomplete>
-    </b-field>
+        <template slot-scope="props">
+            {{ props.option.title }}
+        </template>
+    </b-autocomplete>
 </template>
 
 <script>

@@ -18,7 +18,7 @@
                 <b-table-column
                     v-for="column in columns" :key="column.field"
                     :field="column.field" :label="column.label">
-                    <d-field :type="column.type" v-model="props.row[column.field]"></d-field>
+                    <d-field :setting="column" v-model="props.row[column.field]"></d-field>
                 </b-table-column>
             </template>
             <template slot="detail" slot-scope="props">

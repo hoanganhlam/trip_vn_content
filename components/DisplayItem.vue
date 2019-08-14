@@ -5,7 +5,7 @@
             v-for="column in fields" :key="column.field"
             :field="column.field" >
             <b-field :label="column.label">
-                <d-field :type="column.type" v-model="value[column.field]"></d-field>
+                <d-field :setting="column" v-model="value[column.field]"></d-field>
             </b-field>
         </div>
     </div>
