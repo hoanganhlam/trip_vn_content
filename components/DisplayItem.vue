@@ -1,11 +1,8 @@
 <template>
     <div>
-        <div
-            class="bt_16"
-            v-for="column in fields" :key="column.field"
-            :field="column.field" >
+        <div class="bt_16" v-for="column in fields" :key="column.field">
             <b-field :label="column.label">
-                <d-field :setting="column" v-model="value[column.field]"></d-field>
+                <d-field :setting="column" v-model="data[column.field]"></d-field>
             </b-field>
         </div>
     </div>
@@ -16,6 +13,11 @@
         name: "DisplayItem",
         props: {
             value: {}
+        },
+        data() {
+            return {
+                data: this.value
+            }
         },
         computed: {
             fields() {

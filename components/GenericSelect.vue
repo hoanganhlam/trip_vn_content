@@ -1,12 +1,13 @@
 <template>
     <b-autocomplete
-            :data="data"
-            :field="field"
-            :loading="isFetching"
-            @typing="getAsyncData"
-            @select="handleSelect">
+        :value="selected[field]"
+        :data="data"
+        :field="field"
+        :loading="isFetching"
+        @typing="getAsyncData"
+        @select="handleSelect">
         <template slot-scope="props">
-            {{ props.option.title }}
+            {{ props.option[field] }}
         </template>
     </b-autocomplete>
 </template>
@@ -16,6 +17,7 @@
 
     export default {
         props: {
+            value: {},
             endpoint: String,
             field: {
                 default: 'title',
@@ -25,7 +27,7 @@
         data() {
             return {
                 data: [],
-                selected: null,
+                selected: this.value,
                 isFetching: false
             }
         },

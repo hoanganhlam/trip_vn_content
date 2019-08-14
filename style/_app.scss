@@ -60,23 +60,6 @@ $primary: #28b76c;
     }
 }
 
-
-.logo {
-    padding: 0;
-    display: unset;
-    font-family: sans-serif;
-
-    .large {
-        font-size: 40px;
-        font-weight: bolder;
-        color: #28b76c;
-    }
-
-    .small {
-        font-size: 16px;
-    }
-}
-
 span + i {
     margin-left: 10px;
 }
@@ -104,80 +87,17 @@ span + i {
 .is-bold {
     font-weight: bold;
 }
-
+.input, .taginput .taginput-container.is-focusable, .textarea, .select select,
 .button, .input, .textarea, .select select, .file-cta, .file-name {
     border-radius: 2px;
-}
-
-.public-job-details-info {
-    border-top: 1px solid #D8DBDE;
-    border-bottom: 1px solid #D8DBDE;
-    margin: 32px 0;
-    padding: 25px 0;
-}
-
-.public-job-details-spec {
-    color: #2d3031;
-    display: flex;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 24px;
-    margin-bottom: 5px;
-    margin-top: 8px;
-    padding-top: 2px;
-    width: 100%;
 }
 
 .public-job-details-spec .icon {
     margin-right: 10px;
 }
 
-.public-job-details-spec dt {
-    width: 29%;
-}
-
-.public-job-details-spec dd {
-    font-weight: 500;
-}
-
-.onboarding-header-label {
-    font-size: 12px;
-    position: relative;
-}
-
-.onboarding-header-label:before {
-}
-
-.onboarding-header {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #D8DBDE;
-    max-width: 1032px;
-    margin: 0 auto 30px;
-    padding: 42px 10px 20px;
-    justify-content: space-between;
-}
-
-
-.page-index {
-    //.container {
-    //    max-width: 720px;
-    //}
-}
-
 .label {
     font-weight: normal;
-}
-
-.apply-form {
-    .card-content,
-    .card-header {
-        padding: 2.5rem;
-
-        .title {
-            margin-bottom: 0;
-        }
-    }
 }
 
 .login-separator {
@@ -222,4 +142,34 @@ span + i {
 
 .title a {
     color: #2d3031;
+}
+
+.selectable {
+    cursor: pointer;
+    position: relative;
+
+    &.selected {
+        &:after {
+            content: "";
+            background: #00000069;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .fas {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 2;
+            color: #FFF;
+        }
+    }
+}
+
+.dropdown-content {
+    border-radius: 0;
 }

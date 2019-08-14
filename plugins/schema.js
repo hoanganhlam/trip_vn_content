@@ -5,7 +5,7 @@ const makerFields = ['title', 'slug', 'description', 'coordinates', 'address', '
 const taxonomyFields = ['title', 'slug', 'description']
 
 const SCHEMA = {
-    'areas': makerFields.push('continent'),
+    'areas': makerFields.concat(['continent']),
     'nations': makerFields.concat(['areas', 'continent', 'poster']),
     'tags': taxonomyFields.concat(['is_important', 'content_types', 'label', 'photo']),
     'destinations': makerFields.concat(['nation', 'poster', 'photos', 'tags', 'staff', 'is_approve',]),
@@ -76,9 +76,36 @@ const fields = [
     {
         field: 'continent',
         label: 'Lục địa',
-        type: 'String',
+        type: 'option',
         show: false,
-        update: true
+        update: true,
+        options: [
+            {
+                title: 'Châu mỹ',
+                value: 'americas',
+                coordinates: [-105.25511870000003, 54.5259614]
+            },
+            {
+                title: 'Châu Á',
+                value: 'asia',
+                coordinates: [100.61965529999998, 34.047863]
+            },
+            {
+                title: 'Châu Phi',
+                value: 'africa',
+                coordinates: [34.50852299999997, -8.783195]
+            },
+            {
+                title: 'Châu Úc',
+                value: 'australia',
+                coordinates: [140.01876530000004, -22.7359095]
+            },
+            {
+                title: 'Châu Âu',
+                value: 'europe',
+                coordinates: [15.255118700000025, 54.5259614]
+            }
+        ]
     },
     {
         field: 'areas',
@@ -115,7 +142,7 @@ const fields = [
     {
         field: 'tags',
         label: 'Thẻ',
-        type: 'generic',
+        type: 'tag',
         show: false,
         update: true,
         source: '/destination/point-tags/'
@@ -126,15 +153,17 @@ const fields = [
         type: 'generic',
         show: false,
         update: true,
-        source: '/auth/user/'
+        source: '/auth/user/',
+        showField: 'username',
     },
     {
         field: 'staff',
         label: 'Quản lý',
-        type: 'generic',
+        type: 'tag',
         show: false,
         update: true,
-        source: '/auth/user/'
+        source: '/auth/user/',
+        showField: 'username',
     },
     {
         field: 'is_important',
@@ -168,14 +197,14 @@ const fields = [
     {
         field: 'label',
         label: 'Label',
-        type: 'string',
+        type: 'text',
         show: false,
         update: true
     },
     {
         field: 'photo',
         label: 'Hình ảnh',
-        type: 'generic',
+        type: 'image',
         show: false,
         update: true,
         source: '/media/media/'

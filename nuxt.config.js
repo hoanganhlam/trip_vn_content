@@ -2,6 +2,10 @@ require('dotenv').config()
 
 export default {
     mode: 'spa',
+    env: {
+        domain: process.env.DOMAIN,
+        apiDomain: process.env.API_DOMAIN
+    },
     /*
     ** Headers of the page
     */
@@ -59,7 +63,7 @@ export default {
             local: {
                 endpoints: {
                     login: {
-                        url: '/users/login/',
+                        url: '/auth/rest-auth/login/',
                         method: 'post',
                         propertyName: 'token',
                         headers: {
@@ -69,23 +73,28 @@ export default {
                     },
                     logout: {
                         method: 'post',
-                        url: '/users/logout/'
+                        url: '/auth/rest-auth/logout/'
                     },
                     user: {
-                        url: '/users/me/',
+                        url: '/auth/user/me/',
                         method: 'get',
                         propertyName: ''
                     }
                 },
                 tokenRequired: true,
-                tokenType: 'Bearer'
+                tokenType: 'JWT'
+            },
+            google: {
+                client_id:
+                    '1031942923634-j4m66uaj8toiphphkj2q8q0thkh9horu.apps.googleusercontent.com',
+                redirect_uri: process.env.DOMAIN + '/member/callback'
             }
         },
         redirect: {
-            login: '/dashboard/login',
-            logout: '/dashboard/logout',
-            callback: '/dashboard/callback',
-            user: '/dashboard/me'
+            login: '/member/login',
+            logout: '/member/logout',
+            callback: '/member/callback',
+            user: '/member/me'
         },
     },
     /*
