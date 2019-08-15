@@ -219,14 +219,14 @@ const fields = [
     {
         field: 'price',
         label: 'Giá',
-        type: 'text',
+        type: 'number',
         show: true,
         update: true
     },
     {
         field: 'max_quantity',
         label: 'Số lượng',
-        type: 'text',
+        type: 'number',
         show: true,
         update: true
     },
@@ -376,7 +376,7 @@ const fields = [
     {
         field: 'estimate_price',
         label: 'Giá ước tính',
-        type: 'text',
+        type: 'number',
         show: true,
         update: true
     },

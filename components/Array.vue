@@ -8,7 +8,7 @@
         props: ['value'],
         data() {
             return {
-                data: this.value.toString()
+                data: this.value ? this.value.toString() : ''
             }
         },
         watch: {

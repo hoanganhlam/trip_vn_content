@@ -18,6 +18,7 @@
             :endpoint="setting.source" v-model="data"
             :field="setting.showField"></g-tag>
         <b-input v-else-if="setting.type ==='text'" v-model="data"></b-input>
+        <b-input v-else-if="setting.type ==='number'" type="number" v-model="data"></b-input>
         <gm-browser v-else-if="setting.type ==='gallery'" v-model="data"></gm-browser>
         <g-object v-else-if="setting.type ==='object'" v-model="data"></g-object>
         <div v-else>

@@ -1,32 +1,38 @@
 <template>
     <div style="width: 100%">
+        <div class="bt_16">
+            <div class="level-left"></div>
+            <div class="level-right">
+                <b-button @click="addNew">Thêm mới</b-button>
+            </div>
+        </div>
         <b-table
-            :loading="isLoading"
-            :data="results"
-            :columns="columns"
-            ref="table"
-            paginated
-            backend-sorting
-            backend-pagination
-            :total="count"
-            :per-page="pageSize"
-            @page-change="onPageChange"
-            detailed
-            detail-key="id"
-            icon-pack="fa"
-            aria-next-label="Next page"
-            aria-previous-label="Previous page"
-            aria-page-label="Page"
-            aria-current-label="Current page">
+                :loading="isLoading"
+                :data="results"
+                :columns="columns"
+                ref="table"
+                paginated
+                backend-sorting
+                backend-pagination
+                :total="count"
+                :per-page="pageSize"
+                @page-change="onPageChange"
+                detailed
+                detail-key="id"
+                icon-pack="fa"
+                aria-next-label="Next page"
+                aria-previous-label="Previous page"
+                aria-page-label="Page"
+                aria-current-label="Current page">
             <template slot-scope="props">
                 <b-table-column
-                    v-for="column in columns" :key="column.field"
-                    :field="column.field" :label="column.label">
-                    <d-field :setting="column" v-model="props.row[column.field]"></d-field>
+                        v-for="column in columns" :key="column.field"
+                        :field="column.field" :label="column.label">
+                    <d-field :setting="column" v-model="props.row[column.field]"/>
                 </b-table-column>
             </template>
             <template slot="detail" slot-scope="props">
-                <d-item v-model="props.row"></d-item>
+                <d-item v-model="props.row" @delete="fetch()" @create="fetch()"/>
             </template>
         </b-table>
     </div>
@@ -42,6 +48,11 @@
                 page: 1,
                 pageSize: 25,
                 isLoading: false
+            }
+        },
+        head() {
+            return {
+                title: "Model"
             }
         },
         methods: {
@@ -65,6 +76,9 @@
                 this.page = page
                 this.fetch()
             },
+            addNew() {
+                this.results.unshift({})
+            }
         },
         created() {
             this.fetch()
