@@ -77,7 +77,8 @@
             async fetch() {
                 let query = {
                     page_size: this.size,
-                    page: this.current
+                    page: this.current,
+                    ordering: '-id'
                 }
                 this.response = await this.$axios.$get('/media/media/', {
                     params: query
