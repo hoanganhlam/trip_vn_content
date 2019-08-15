@@ -32,11 +32,25 @@
         },
         methods: {
             handleSave() {
-                let body = this.data
-
-                for (field of body) {
-                    console.log(field);
-                }
+                let body = {}
+                let fields = Object.keys(this.data)
+                fields.forEach(field => {
+                    if (Array.isArray(this.data[field])) {
+                        body[field] = []
+                        this.data[field].forEach(data => {
+                            if (typeof data === 'object') {
+                                body[field].push(data['id'])
+                            } else {
+                                body[field].push(data)
+                            }
+                        })
+                    } else if (typeof this.data[field] === 'object') {
+                        body[field] = this.data[field]['id']
+                    } else {
+                        body[field] = this.data[field]
+                    }
+                })
+                console.log(body);
             }
         }
     }
