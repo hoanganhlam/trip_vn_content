@@ -35,6 +35,11 @@
             return {
                 date: new Date(this.value)
             }
+        },
+        watch: {
+            date() {
+                this.$emit('input', this.date)
+            }
         }
     }
 </script>

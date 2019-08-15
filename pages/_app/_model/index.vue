@@ -2,11 +2,15 @@
     <div style="width: 100%">
         <b-table
             :loading="isLoading"
-            :data="response.results"
+            :data="results"
             :columns="columns"
             ref="table"
             paginated
+            backend-sorting
+            backend-pagination
+            :total="count"
             :per-page="pageSize"
+            @page-change="onPageChange"
             detailed
             detail-key="id"
             icon-pack="fa"
@@ -33,11 +37,10 @@
         name: "index.vue",
         data: () => {
             return {
-                response: {
-                    count: 0,
-                    results: []
-                },
-                pageSize: 10,
+                count: 0,
+                results: [],
+                page: 1,
+                pageSize: 25,
                 isLoading: false
             }
         },
@@ -45,9 +48,23 @@
             async fetch() {
                 this.isLoading = true
                 this.pageSize = this.$route.query.page_size || 25
-                this.response = await this.$axios.$get(this.$route.path, {params: this.$route.query})
+                let query = this.$route.query
+                query.page = this.page
+                query.page_size = this.pageSize
+                let res = await this.$axios.$get(this.$route.path, {
+                    params: query
+                }).catch(err => {
+                    console.log(err);
+                })
+                this.results = []
+                this.count = res.count
+                this.results = res.results
                 this.isLoading = false
-            }
+            },
+            onPageChange(page) {
+                this.page = page
+                this.fetch()
+            },
         },
         created() {
             this.fetch()

@@ -1,6 +1,6 @@
 <template>
     <b-autocomplete
-        :value="selected[field]"
+        :value="text"
         :data="data"
         :field="field"
         :loading="isFetching"
@@ -28,6 +28,7 @@
             return {
                 data: [],
                 selected: this.value,
+                text: this.value ? this.value[this.field] : null,
                 isFetching: false
             }
         },
@@ -46,6 +47,12 @@
             }, 500),
             handleSelect(option) {
                 this.selected = option
+                this.text = this.value ? this.value[this.field] : null
+            }
+        },
+        watch: {
+            selected() {
+                this.$emit('input', this.selected)
             }
         }
     }

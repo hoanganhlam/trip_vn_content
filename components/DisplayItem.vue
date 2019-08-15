@@ -5,6 +5,12 @@
                 <d-field :setting="column" v-model="data[column.field]"></d-field>
             </b-field>
         </div>
+        <div class="level">
+            <div class="level-left"></div>
+            <div class="level-right">
+                <b-button @click="handleSave">Save</b-button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -22,6 +28,15 @@
         computed: {
             fields() {
                 return this.getSchema(this.$route.params.model, false)
+            }
+        },
+        methods: {
+            handleSave() {
+                let body = this.data
+
+                for (field of body) {
+                    console.log(field);
+                }
             }
         }
     }

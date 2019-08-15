@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="columns is-multiline">
-            <div v-for="image in selected" :key="image.id" class="column is-2">
+            <div v-for="image in selected" :key="image.id" class="column is-1">
                 <div class="image 1by1 selectable" @click="select(image)">
                     <img :src="image.thumbnails['thumb_200_200']" alt="">
                 </div>
@@ -59,7 +59,7 @@
             },
             size: {
                 type: Number,
-                default: 4
+                default: 6
             }
         },
         data() {
@@ -100,6 +100,9 @@
         watch: {
             current() {
                 this.fetch()
+            },
+            selected() {
+                this.$emit('input', this.selected)
             }
         },
         computed: {

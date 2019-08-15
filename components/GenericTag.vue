@@ -54,6 +54,11 @@
                     this.isFetching = false
                 })
             }, 500),
+        },
+        watch: {
+            tags() {
+                this.$emit('input', this.tags)
+            }
         }
     }
 </script>

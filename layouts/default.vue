@@ -13,8 +13,8 @@
                 <b-navbar-item href="#">
                     Product
                 </b-navbar-item>
-                <b-navbar-item href="#">
-                    Documentation
+                <b-navbar-item>
+                    <n-link to="/activity/activities/">Test</n-link>
                 </b-navbar-item>
             </template>
 
@@ -102,6 +102,11 @@
                                 title: 'Service',
                                 icon: 'home',
                                 to: '/services/',
+                            },
+                            {
+                                title: 'Point Service',
+                                icon: 'home',
+                                to: '/point-services/',
                             }
                         ]
                     },

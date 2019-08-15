@@ -10,6 +10,11 @@
             return {
                 data: this.value.toString()
             }
+        },
+        watch: {
+            data() {
+                this.$emit('input', this.data.split(","))
+            }
         }
     }
 </script>

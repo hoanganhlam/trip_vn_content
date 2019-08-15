@@ -38,7 +38,7 @@
     const FIELD_INTERFACE = {
         title: null,
         value: null,
-        label: null,
+        label: "",
         icon: null,
         required: true,
     }
@@ -56,7 +56,13 @@
         data() {
             return {
                 fields: this.value ? this.value : [],
-                newField: FIELD_INTERFACE,
+                newField: {
+                    title: null,
+                    value: null,
+                    label: "",
+                    icon: null,
+                    required: true,
+                },
                 isOpen: false,
             }
         },
@@ -65,6 +71,11 @@
                 this.fields.push(this.newField)
                 this.newField = FIELD_INTERFACE
             },
+        },
+        watch: {
+            fields() {
+                this.$emit('input', this.fields)
+            }
         }
     }
 </script>
