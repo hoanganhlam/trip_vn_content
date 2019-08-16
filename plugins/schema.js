@@ -22,7 +22,6 @@ const SCHEMA = {
     'groups': baseFields.concat(taxonomyFields)
 }
 
-
 const fields = [
     {
         field: 'title',
@@ -121,7 +120,8 @@ const fields = [
         type: 'generic',
         show: false,
         update: true,
-        source: '/destination/nations/'
+        source: '/destination/nations/',
+        filter: true
     },
     {
         field: 'destination',
@@ -129,7 +129,17 @@ const fields = [
         type: 'generic',
         show: false,
         update: true,
-        source: '/destination/destinations/'
+        source: '/destination/destinations/',
+        filter: true
+    },
+    {
+        field: 'trip',
+        label: 'Chuyến đi',
+        type: 'generic',
+        show: false,
+        update: true,
+        source: '/trip/trips/',
+        filter: true
     },
     {
         field: 'point',
@@ -137,7 +147,8 @@ const fields = [
         type: 'generic',
         show: false,
         update: true,
-        source: '/destination/points/'
+        source: '/destination/points/',
+        filter: true
     },
     {
         field: 'tags',
@@ -145,7 +156,9 @@ const fields = [
         type: 'tag',
         show: false,
         update: true,
-        source: '/destination/point-tags/'
+        source: '/destination/point-tags/',
+        filter: true,
+        multi: true
     },
     {
         field: 'poster',
@@ -155,6 +168,7 @@ const fields = [
         update: true,
         source: '/auth/user/',
         showField: 'username',
+        filter: true
     },
     {
         field: 'staff',
@@ -221,7 +235,8 @@ const fields = [
         label: 'Giá',
         type: 'number',
         show: true,
-        update: true
+        update: true,
+        filter: true
     },
     {
         field: 'max_quantity',
@@ -250,7 +265,8 @@ const fields = [
                 value: 'visit-point',
                 title: 'Thăm quan'
             }
-        ]
+        ],
+        filter: true
     },
     {
         field: 'kind',
@@ -276,7 +292,8 @@ const fields = [
                 value: 'SCOUT',
                 title: 'Tiền trạm'
             }
-        ]
+        ],
+        filter: true
     },
     {
         field: 'status',
@@ -302,7 +319,8 @@ const fields = [
                 value: 'PENDING',
                 title: 'Chờ duyệt'
             }
-        ]
+        ],
+        filter: true
     },
     {
         field: 'created',
@@ -332,7 +350,8 @@ const fields = [
         show: false,
         update: true,
         model: ['trips'],
-        source: '/destination/points/'
+        source: '/destination/points/',
+        filter: true
     },
     {
         field: 'end_point',
@@ -341,7 +360,8 @@ const fields = [
         show: false,
         update: true,
         model: ['trips'],
-        source: '/destination/points/'
+        source: '/destination/points/',
+        filter: true
     },
     {
         field: 'start_point',
@@ -389,5 +409,10 @@ Vue.mixin({
             out = out.filter(item => typeof item.model === 'undefined' || item.model.indexOf(str) !== -1)
             return out
         },
+        allSchema(str) {
+            let out = fields.filter(item => SCHEMA[str].indexOf(item.field) !== -1)
+            out = out.filter(item => typeof item.model === 'undefined' || item.model.indexOf(str) !== -1)
+            return out
+        }
     }
 })

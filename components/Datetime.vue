@@ -7,7 +7,7 @@
                     icon-pack="fa"
                     icon="calendar"
                     :size="size"
-                    placeholder="Chọn ngày"
+                    :placeholder="placeholder"
                     :unselectable-days-of-week="[0, 6]">
                 </b-datepicker>
             </div>
@@ -29,7 +29,8 @@
             value: {},
             size: {
                 default: 'is-default'
-            }
+            },
+            placeholder: {}
         },
         data() {
             return {

@@ -56,7 +56,7 @@ export default {
     ** See https://axios.nuxtjs.org/options
     */
     axios: {
-        baseURL: process.env.API_DOMAIN + '/api/v1/'
+        baseURL: process.env.API_DOMAIN + '/v2/'
     },
     auth: {
         strategies: {

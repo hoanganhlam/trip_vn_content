@@ -1,11 +1,11 @@
 <template>
-    <b-input v-model="data"></b-input>
+    <b-input :placeholder="placeholder" v-model="data"></b-input>
 </template>
 
 <script>
     export default {
         name: "Array",
-        props: ['value'],
+        props: ['value', 'placeholder'],
         data() {
             return {
                 data: this.value ? this.value.toString() : ''

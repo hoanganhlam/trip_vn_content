@@ -4,6 +4,7 @@
         :data="data"
         :field="field"
         :loading="isFetching"
+        :placeholder="placeholder"
         @typing="getAsyncData"
         @select="handleSelect">
         <template slot-scope="props">
@@ -17,6 +18,7 @@
 
     export default {
         props: {
+            placeholder: {},
             value: {},
             endpoint: String,
             field: {

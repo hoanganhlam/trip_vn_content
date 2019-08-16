@@ -64,10 +64,9 @@
             },
             async handleDelete() {
                 if (this.sure) {
-                    if (this.data.slug) {
-                        await this.$axios.$delete(`${this.$route.path + this.data.slug}/`)
-                    } else {
+                    if (this.data.id) {
                         await this.$axios.$delete(`${this.$route.path + this.data.id}/`)
+
                     }
                     this.$emit('delete')
                 } else {

@@ -6,7 +6,7 @@
         :field="field"
         icon="tag"
         icon-pack="fa"
-        placeholder="Add a tag"
+        :placeholder="placeholder"
         @typing="getFilteredTags">
         <template slot-scope="props">
             {{props.option[field]}}
@@ -22,6 +22,7 @@
 
     export default {
         props: {
+            placeholder: {},
             value: {
                 default: () => {
                     return []
